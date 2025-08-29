@@ -25,10 +25,7 @@ export async function GET() {
       );
     }
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
 
@@ -52,9 +49,6 @@ export async function PATCH(request: Request) {
       );
     }
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

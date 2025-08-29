@@ -37,12 +37,13 @@
     "app/**/*.tsx",
     "components/**/*.ts",
     "components/**/*.tsx",
-    "lib1/**/*.ts",
-    "lib1/**/*.tsx",
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
     "types/**/*.ts",
     "types/**/*.tsx",
     ".next/types/**/*.ts",
-    "lib/store/api/api.ts"
+    "lib/api/api.ts",
+    "middleware.ts"
   ],
   "exclude": [
     "node_modules"

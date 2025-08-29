@@ -22,10 +22,8 @@ export async function POST(req: NextRequest) {
           path: parsed.Path,
           maxAge: Number(parsed['Max-Age']),
         };
-        if (parsed.accessToken)
-          cookieStore.set('accessToken', parsed.accessToken, options);
-        if (parsed.refreshToken)
-          cookieStore.set('refreshToken', parsed.refreshToken, options);
+        if (parsed.accessToken) cookieStore.set('accessToken', parsed.accessToken, options);
+        if (parsed.refreshToken) cookieStore.set('refreshToken', parsed.refreshToken, options);
       }
 
       return NextResponse.json(apiRes.data, { status: apiRes.status });
@@ -41,9 +39,6 @@ export async function POST(req: NextRequest) {
       );
     }
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

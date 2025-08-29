@@ -20,10 +20,7 @@ export async function POST() {
     cookieStore.delete('accessToken');
     cookieStore.delete('refreshToken');
 
-    return NextResponse.json(
-      { message: 'Logged out successfully' },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: 'Logged out successfully' }, { status: 200 });
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
@@ -33,9 +30,6 @@ export async function POST() {
       );
     }
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

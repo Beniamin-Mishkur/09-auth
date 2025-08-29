@@ -16,7 +16,7 @@ const allTags: Tag[] = [
 export default function SidebarNotes() {
   return (
     <div>
-      <h3>Фільтры</h3>
+      <h3>Filters</h3>
       <ul className={css.menuList}>
         {allTags.map((tag) => (
           <li key={tag} className={css.menuItem}>
