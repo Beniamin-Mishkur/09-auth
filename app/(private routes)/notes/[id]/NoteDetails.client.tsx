@@ -1,10 +1,12 @@
+// app/notes/[id]/NoteDetails.client.tsx
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { fetchNoteById } from "@/lib/api";
-import css from "@/app/notes/[id]/NoteDetails.module.css";
+import { fetchNoteById } from "@/lib/api/clientApi";
+import css from "@/app/(private routes)/notes/[id]/NoteDetails.module.css";
 import type { Note } from "@/types/note";
+import { useEffect } from "react";
 
 export default function NoteDetailsClient() {
   const params = useParams();
@@ -22,6 +24,12 @@ export default function NoteDetailsClient() {
     enabled: !!id,
     refetchOnMount: false,
   });
+
+  useEffect(() => {
+    if (note) {
+      document.title = `NoteHub - ${note.title}`;
+    }
+  }, [note]);
 
   const handleBackClick = () => {
     router.back();
@@ -47,7 +55,7 @@ export default function NoteDetailsClient() {
       <div className={css.item}>
         <div className={css.header}>
           <h2>{note.title}</h2>
-          <span className={css.tag}>{note.tag}</span> {}
+          <span className={css.tag}>{note.tag}</span>
         </div>
         <p className={css.content}>{note.content}</p>
         <p className={css.date}>

@@ -1,9 +1,10 @@
+// app/@modal/(.)notes/[id]/NotePreview.client.tsx
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { fetchNoteById } from "@/lib/api";
+import { fetchNoteById } from "@/lib/api/clientApi";
 import type { Note } from "@/types/note";
 import Modal from "@/components/Modal/Modal";
 import css from "@/components/NotePreview/NotePreview.module.css";
