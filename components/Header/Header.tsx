@@ -2,8 +2,8 @@
 "use client";
 
 import Link from "next/link";
-import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import TagsMenu from "../TagsMenu/TagsMenu";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 import type { Tag } from "@/types/note";
 import css from "./Header.module.css";
 
@@ -18,22 +18,17 @@ const Header = ({ allTags }: HeaderProps) => {
         <Link href="/" className={css.headerLink} aria-label="Home">
           NoteHub
         </Link>
-        <div className={css.navigation}>
-          <TagsMenu allTags={allTags} />
-          <Link href="/about" className={css.navigationLink}>
-            About
-          </Link>
-          <SignedIn>
-            <div className={css.navigationItem}>
-              <UserButton />
-            </div>
-          </SignedIn>
-          <SignedOut>
-            <Link href="/sign-in" className={css.navigationLink}>
-              Sign In
+        <ul className={css.navigation}>
+          <li className={css.navigationItem}>
+            <TagsMenu allTags={allTags} />
+          </li>
+          <li className={css.navigationItem}>
+            <Link href="/about" className={css.navigationLink}>
+              About
             </Link>
-          </SignedOut>
-        </div>
+          </li>
+          <AuthNavigation />
+        </ul>
       </nav>
     </header>
   );
