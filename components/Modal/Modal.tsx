@@ -49,6 +49,6 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         {children}
       </div>
     </div>,
-    portalElement as HTMLElement
+    portalElement as HTMLElement,
   );
 }

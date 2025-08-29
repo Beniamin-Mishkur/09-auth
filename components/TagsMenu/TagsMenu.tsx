@@ -15,10 +15,7 @@ const TagsMenu = ({ allTags }: TagsMenuProps) => {
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  const uniqueTags = useMemo(
-    () => Array.from(new Set(allTags)),
-    [allTags]
-  );
+  const uniqueTags = useMemo(() => Array.from(new Set(allTags)), [allTags]);
 
   const currentTag: Tag = useMemo(() => {
     const m = pathname.match(/^\/notes(?:\/filter\/([^/?#]+))?/);

@@ -26,7 +26,7 @@ export default function TanStackProvider({
             staleTime: 5 * 1000,
           },
         },
-      })
+      }),
   );
 
   return (

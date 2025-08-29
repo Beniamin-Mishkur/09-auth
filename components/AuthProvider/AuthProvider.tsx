@@ -1,9 +1,9 @@
 // components / AuthProvider / AuthProvider
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useAuthStore } from '@/lib/store/authStore';
-import { fetchSession } from '@/lib/api/clientApi';
+import { useEffect, useState } from "react";
+import { useAuthStore } from "@/lib/store/authStore";
+import { fetchSession } from "@/lib/api/clientApi";
 
 interface AuthProviderProps {
   children: React.ReactNode;

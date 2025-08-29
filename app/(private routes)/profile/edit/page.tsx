@@ -1,28 +1,28 @@
 /* app/(private-routes)/profile/edit/page.tsx */
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { useAuthStore } from '@/lib/store/authStore';
-import { updateUserProfile } from '@/lib/api/clientApi';
-import css from './EditProfilePage.module.css';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useAuthStore } from "@/lib/store/authStore";
+import { updateUserProfile } from "@/lib/api/clientApi";
+import css from "./EditProfilePage.module.css";
 
 export default function EditProfilePage() {
   const { user, isAuthenticated, setUser } = useAuthStore();
   const [isLoading, setIsLoading] = useState(true);
-  const [formData, setFormData] = useState({ username: '', email: '' });
+  const [formData, setFormData] = useState({ username: "", email: "" });
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     if (!isAuthenticated || !user) {
-      router.push('/sign-in');
+      router.push("/sign-in");
       return;
     }
     setFormData({
-      username: user.username || '',
-      email: user.email || '',
+      username: user.username || "",
+      email: user.email || "",
     });
     setIsLoading(false);
   }, [isAuthenticated, user, router]);
@@ -37,7 +37,7 @@ export default function EditProfilePage() {
     }
 
     if (Object.keys(payload).length === 0) {
-      setError('No changes to save');
+      setError("No changes to save");
       return;
     }
 
@@ -45,24 +45,24 @@ export default function EditProfilePage() {
       const updatedUser = await updateUserProfile(payload);
       if (updatedUser) {
         setUser(updatedUser);
-        router.push('/profile');
+        router.push("/profile");
       } else {
-        setError('Failed to update profile');
+        setError("Failed to update profile");
       }
     } catch (err) {
       const message =
-        typeof err === 'object' &&
+        typeof err === "object" &&
         err !== null &&
-        'message' in err &&
-        typeof (err as { message?: string }).message === 'string'
+        "message" in err &&
+        typeof (err as { message?: string }).message === "string"
           ? (err as { message?: string }).message!
-          : 'Failed to update profile';
+          : "Failed to update profile";
       setError(message);
     }
   };
 
   const handleCancel = () => {
-    router.push('/profile');
+    router.push("/profile");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +82,7 @@ export default function EditProfilePage() {
   }
 
   const avatarSrc: string =
-    user.avatar ?? 'https://ac.goit.global/fullstack/react/default-avatar.jpg';
+    user.avatar ?? "https://ac.goit.global/fullstack/react/default-avatar.jpg";
 
   return (
     <main className={css.mainContent}>

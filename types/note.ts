@@ -1,6 +1,6 @@
 // types/note.ts
 
-export type Tag = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping' | 'All';
+export type Tag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping" | "All";
 
 export interface Note {
   id: string;

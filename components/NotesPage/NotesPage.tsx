@@ -34,7 +34,7 @@ export default function NotesPage() {
     return (
       <div className="app">
         <div className="toolbar">
-          <p style={{ color: "red" }}>Error loading notes.</p>
+          <p style={{ color: "red" }}>Error while loading notes.</p>
         </div>
       </div>
     );

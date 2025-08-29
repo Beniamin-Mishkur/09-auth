@@ -1,17 +1,17 @@
 // app/(auth routes)/sign-in/page.tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { loginUser } from '@/lib/api/clientApi';
-import { useAuthStore } from '@/lib/store/authStore';
-import toast from 'react-hot-toast';
-import axios from 'axios';
-import css from './SignInPage.module.css';
+import { loginUser } from "@/lib/api/clientApi";
+import { useAuthStore } from "@/lib/store/authStore";
+import toast from "react-hot-toast";
+import axios from "axios";
+import css from "./SignInPage.module.css";
 
 export default function SignInPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { setUser } = useAuthStore();
@@ -22,17 +22,16 @@ export default function SignInPage() {
     try {
       const user = await loginUser({ email, password });
       setUser(user);
-      toast.success('Login successful!');
-      // ВАЖНА: прымусовы reload!
-      window.location.replace('/profile');
+      toast.success("Login successful!");
+      window.location.replace("/profile");
     } catch (error: unknown) {
-      let message = 'Login failed';
+      let message = "Login failed";
       if (axios.isAxiosError(error) && error.response) {
         console.error(
-          'Login error:',
-          JSON.stringify(error.response.data, null, 2)
+          "Login error:",
+          JSON.stringify(error.response.data, null, 2),
         );
-        message = error.response.data.message || 'Unknown login error';
+        message = error.response.data.message || "Unknown login error";
       } else if (error instanceof Error) {
         message = error.message;
       }
@@ -78,10 +77,10 @@ export default function SignInPage() {
             className={css.submitButton}
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Signing in...' : 'Log in'}
+            {isSubmitting ? "Signing in..." : "Log in"}
           </button>
         </div>
-        <p className={css.error}>{isSubmitting ? '' : ' '}</p>
+        <p className={css.error}>{isSubmitting ? "" : " "}</p>
       </form>
     </main>
   );

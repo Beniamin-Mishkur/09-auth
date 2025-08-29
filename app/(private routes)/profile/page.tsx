@@ -1,18 +1,18 @@
 // app/(private-routes)/profile/page.tsx
-import Image from 'next/image';
-import Link from 'next/link';
-import { getCurrentUser } from '@/lib/api/serverApi';
-import css from './ProfilePage.module.css';
-import type { Metadata } from 'next';
+import Image from "next/image";
+import Link from "next/link";
+import { getCurrentUser } from "@/lib/api/serverApi";
+import css from "./ProfilePage.module.css";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'NoteHub | Profile',
-  description: 'Your user profile page in NoteHub.',
+  title: "NoteHub | Profile",
+  description: "Your user profile page in NoteHub.",
 };
 
 export default async function ProfilePage() {
   const user = await getCurrentUser();
-  console.log('USER:', user);
+  console.log("USER:", user);
   if (!user) {
     return null;
   }
@@ -30,7 +30,7 @@ export default async function ProfilePage() {
           <Image
             src={
               user.avatar ||
-              'https://ac.goit.global/fullstack/react/default-avatar.jpg'
+              "https://ac.goit.global/fullstack/react/default-avatar.jpg"
             }
             alt="User Avatar"
             width={120}

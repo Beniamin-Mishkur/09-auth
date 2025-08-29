@@ -31,6 +31,6 @@ export const useNoteStore = create<DraftStore>()(
     }),
     {
       name: "note-draft-storage",
-    }
-  )
+    },
+  ),
 );

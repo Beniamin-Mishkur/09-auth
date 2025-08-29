@@ -14,7 +14,7 @@ interface NotesContextType {
 }
 
 export const NotesContext = createContext<NotesContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function useNotesContext() {
